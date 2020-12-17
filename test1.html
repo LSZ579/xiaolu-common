@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			点击事件
+		</div>
+	</body>
+	<script src="xiaolu-common.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	var origin={
+			a:1,
+			b:[{
+				a:2
+			}],
+			c:{
+				o:555,
+				a:{
+					p:{
+						c:666
+					}
+				}
+			}
+		}
+		let obj=deepClone(origin)
+		console.log(obj)
+		var handle={
+			addEvent:function(el,type,callback){
+				console.log(el.addEventListener)
+				if(el.addEventListener){
+					console.log('非ie')
+					el.addEventListener(type,callback)
+				}else if(el.attachEvent){
+					console.log('ie')
+					el.attachEvent('on'+type,callback)
+				}
+			}
+		}
+		let dom = document.getElementById('app');
+		handle.addEvent(dom,'click',function(e){
+			console.log(e)
+		})
+		
+		// let promise=new Promise()
+		// promise(cb,err){
+		// 	let xhr = new XMLHttpRequest()
+		// 	xhr.get('url',data)
+		// 	xhr.setRequestHeader()
+		// 	xhr.send()
+		// }
+		var fun=function(){}
+		let type=getDataType()
+		console.log(type)
+		let arr=[1,3,6,1,0,55,7,8]
+		let newArr=[{
+			a:1
+		},{a:5},{a:2},{a:89},{a:8}
+		]
+		console.log(keySort(arr))
+		console.log(keySort(newArr,'a'))
+		console.log(getNowTime)
+	</script>
+</html>
